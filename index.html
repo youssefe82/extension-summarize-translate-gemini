@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarize and Translate with Gemini - Extension Preview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="extension-info">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iIzQyODVGNCIvPgo8cGF0aCBkPSJNMTIgMTZIMzZWMzJIMTJWMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTYgMjBIMzJWMjRIMTZWMjBaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0xNiAyNkgyOFYyOEgxNlYyNloiIGZpbGw9IiM0Mjg1RjQiLz4KPC9zdmc+" alt="Extension Icon" class="extension-icon">
+                <div>
+                    <h1>Summarize and Translate with Gemini</h1>
+                    <p class="subtitle">Chrome Extension Preview</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="demo-section">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="popup">Extension Popup</button>
+                <button class="tab-button" data-tab="options">Options Page</button>
+                <button class="tab-button" data-tab="results">Results Page</button>
+            </div>
+
+            <!-- Popup Tab -->
+            <div class="tab-content active" id="popup-tab">
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="address-bar">Extension Popup</div>
+                    </div>
+                    <div class="popup-container">
+                        <div class="popup-header">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iIzQyODVGNCIvPgo8cGF0aCBkPSJNMTIgMTZIMzZWMzJIMTJWMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTYgMjBIMzJWMjRIMTZWMjBaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0xNiAyNkgyOFYyOEgxNlYyNloiIGZpbGw9IiM0Mjg1RjQiLz4KPC9zdmc+" alt="Icon" class="popup-icon">
+                            <h2>Summarize and Translate with Gemini</h2>
+                        </div>
+                        
+                        <div class="content-area" id="popup-content">
+                            <div class="demo-content">
+                                <h3>📄 Article Summary</h3>
+                                <ol>
+                                    <li>This article discusses the latest developments in artificial intelligence and machine learning technologies.</li>
+                                    <li>Key breakthroughs include improved natural language processing capabilities and more efficient neural network architectures.</li>
+                                    <li>The impact on various industries such as healthcare, finance, and education is expected to be significant.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="status-area">
+                            <span id="popup-status"></span>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="copy-btn">📋 Copy</button>
+                            <span class="copy-status" id="copy-status"></span>
+                        </div>
+                        
+                        <div class="controls-group">
+                            <select id="language-model" class="select-control">
+                                <option value="2.5-flash">Gemini 2.5 Flash</option>
+                                <option value="2.5-pro">Gemini 2.5 Pro</option>
+                                <option value="2.0-flash">Gemini 2.0 Flash</option>
+                            </select>
+                            <select id="language-code" class="select-control">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ja">日本語</option>
+                            </select>
+                            <button class="btn btn-secondary" id="run-btn">🔄 Run again</button>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button class="btn btn-secondary" id="results-btn">📊 Open results in a new tab</button>
+                            <button class="btn btn-secondary" id="options-btn">⚙️ Open options page</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Options Tab -->
+            <div class="tab-content" id="options-tab">
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="address-bar">chrome-extension://extension-id/options.html</div>
+                    </div>
+                    <div class="options-container">
+                        <div class="options-header">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iIzQyODVGNCIvPgo8cGF0aCBkPSJNMTIgMTZIMzZWMzJIMTJWMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTYgMjBIMzJWMjRIMTZWMjBaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0xNiAyNkgyOFYyOEgxNlYyNloiIGZpbGw9IiM0Mjg1RjQiLz4KPC9zdmc+" alt="Icon" class="options-icon">
+                            <h1>Options - Summarize and Translate with Gemini</h1>
+                        </div>
+                        
+                        <div class="options-content">
+                            <div class="option-group">
+                                <label for="api-key">Gemini API Key</label>
+                                <input type="password" id="api-key" placeholder="Enter your Gemini API key" class="input-field">
+                                <small>You can obtain a Gemini API Key from <a href="#" target="_blank">Google AI Studio</a></small>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="model-select">Language Model</label>
+                                <select id="model-select" class="select-field">
+                                    <option value="2.5-flash">Gemini 2.5 Flash (Thinking Off)</option>
+                                    <option value="2.5-pro">Gemini 2.5 Pro (Thinking On)</option>
+                                    <option value="2.0-flash">Gemini 2.0 Flash</option>
+                                    <option value="1.5-pro">Gemini 1.5 Pro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="language-select">Language for Summarization and Translation</label>
+                                <select id="language-select" class="select-field">
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="fr">Français</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="ja">日本語</option>
+                                    <option value="ko">한국어</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label>When no text is selected, do the following action</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="no-text-action" value="summarize" checked> Summarize (default)</label>
+                                    <label><input type="radio" name="no-text-action" value="translate"> Translate</label>
+                                    <label><input type="radio" name="no-text-action" value="custom1"> Custom action 1</label>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label>When text is selected, do the following action</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="text-action" value="summarize"> Summarize</label>
+                                    <label><input type="radio" name="text-action" value="translate" checked> Translate (default)</label>
+                                    <label><input type="radio" name="text-action" value="custom1"> Custom action 1</label>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label>
+                                    <input type="checkbox" id="context-menus" checked>
+                                    Add to context menu
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label>
+                                    <input type="checkbox" id="streaming">
+                                    Enable streaming output from the language model
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label for="theme-select">Theme</label>
+                                <select id="theme-select" class="select-field">
+                                    <option value="system">System</option>
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                            
+                            <div class="button-group">
+                                <button class="btn btn-primary" id="save-options">💾 Save options</button>
+                                <span class="save-status" id="save-status"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Tab -->
+            <div class="tab-content" id="results-tab">
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="address-bar">chrome-extension://extension-id/results.html</div>
+                    </div>
+                    <div class="results-container">
+                        <div class="results-header">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iIzQyODVGNCIvPgo8cGF0aCBkPSJNMTIgMTZIMzZWMzJIMTJWMTZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTYgMjBIMzJWMjRIMTZWMjBaIiBmaWxsPSIjNDI4NUY0Ii8+CjxwYXRoIGQ9Ik0xNiAyNkgyOFYyOEgxNlYyNloiIGZpbGw9IiM0Mjg1RjQiLz4KPC9zdmc+" alt="Icon" class="results-icon">
+                            <h1>Results - Summarize and Translate with Gemini</h1>
+                        </div>
+                        
+                        <div class="results-content">
+                            <div class="initial-result">
+                                <h3>📄 Article Summary</h3>
+                                <ol>
+                                    <li>This article discusses the latest developments in artificial intelligence and machine learning technologies.</li>
+                                    <li>Key breakthroughs include improved natural language processing capabilities and more efficient neural network architectures.</li>
+                                    <li>The impact on various industries such as healthcare, finance, and education is expected to be significant.</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="conversation" id="conversation">
+                                <div class="message user-message">
+                                    <div class="message-content">
+                                        <strong>You:</strong> Can you provide more details about the healthcare applications?
+                                    </div>
+                                </div>
+                                <div class="message ai-message">
+                                    <div class="message-content">
+                                        <strong>Gemini:</strong> Healthcare applications of AI include:
+                                        <ul>
+                                            <li><strong>Medical Imaging:</strong> AI can analyze X-rays, MRIs, and CT scans to detect diseases earlier and more accurately than traditional methods.</li>
+                                            <li><strong>Drug Discovery:</strong> Machine learning accelerates the identification of potential drug compounds and predicts their effectiveness.</li>
+                                            <li><strong>Personalized Treatment:</strong> AI analyzes patient data to recommend tailored treatment plans based on individual genetic profiles and medical history.</li>
+                                            <li><strong>Predictive Analytics:</strong> AI systems can predict patient deterioration, readmission risks, and outbreak patterns.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="controls-section">
+                                <div class="button-group">
+                                    <button class="btn btn-secondary" id="clear-conversation">🗑️ Clear conversation</button>
+                                    <button class="btn btn-primary" id="copy-results">📋 Copy</button>
+                                    <span class="copy-status" id="results-copy-status"></span>
+                                </div>
+                                
+                                <div class="input-section">
+                                    <textarea id="follow-up-question" placeholder="Ask a follow-up question" rows="3"></textarea>
+                                    <div class="send-controls">
+                                        <select id="results-model" class="select-control">
+                                            <option value="2.5-flash">Gemini 2.5 Flash</option>
+                                            <option value="2.5-pro">Gemini 2.5 Pro</option>
+                                        </select>
+                                        <button class="btn btn-primary" id="send-question">📤 Send</button>
+                                        <span class="send-status" id="send-status"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Smart Summarization</h3>
+                    <p>Automatically summarize web pages, articles, and even YouTube video captions using advanced AI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Multi-language Translation</h3>
+                    <p>Translate selected text or entire pages into 15+ languages with high accuracy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>Image Analysis</h3>
+                    <p>Analyze and summarize images, PDFs, and visual content directly in your browser.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Follow-up Questions</h3>
+                    <p>Ask additional questions about the content and get detailed explanations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Custom Actions</h3>
+                    <p>Create custom prompts for specialized tasks and workflows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast & Efficient</h3>
+                    <p>Powered by Google's latest Gemini models for quick and accurate results.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="installation-section">
+            <h2>Installation</h2>
+            <div class="install-options">
+                <div class="install-card">
+                    <h3>Chrome Web Store</h3>
+                    <p>Install directly from the official Chrome Web Store</p>
+                    <button class="btn btn-primary">Install on Chrome</button>
+                </div>
+                <div class="install-card">
+                    <h3>Firefox Add-ons</h3>
+                    <p>Available on Firefox Add-ons for Firefox users</p>
+                    <button class="btn btn-primary">Install on Firefox</button>
+                </div>
+                <div class="install-card">
+                    <h3>Edge Add-ons</h3>
+                    <p>Get it from Microsoft Edge Add-ons store</p>
+                    <button class="btn btn-primary">Install on Edge</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
