@@ -162,17 +162,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Simulate loading states
-    function simulateLoading(element, messages, duration = 500) {
-        let index = 0;
-        const interval = setInterval(() => {
-            element.textContent = messages[index % messages.length];
-            index++;
-        }, duration);
-        
-        return interval;
-    }
-
     // Add some interactive elements
     const resultsBtn = document.getElementById("results-btn");
     const optionsBtn = document.getElementById("options-btn");
